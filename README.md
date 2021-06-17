@@ -22,5 +22,5 @@ docker image ls
 ## 启动镜像
 
 ```
-docker run -itd --name app -P 80:80 flask-app:master 
+docker run -itd --name app -P 80:80 flask-app:latest 
 ```

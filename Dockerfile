@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.9
 
 WORKDIR /app
 
@@ -6,11 +6,11 @@ ADD . /app
 
 RUN mkdir ~/.pip && mv /app/deploy/pip.conf ~/.pip/
 
-RUN sh -c /app/deploy/changesource.sh
+RUN chmod +x /app/deploy/changesource.sh && /app/deploy/changesource.sh
 
-RUN apt update
-
-RUN pip install -r requirements.txt
+RUN if [ -f requirements.txt ]; then \
+  pip install -r requirements.txt \
+;fi
 
 EXPOSE 80
 
